@@ -22,8 +22,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '#q$cqt5=iabw*gb=(q@8xy@p*lu!p8&u5)%uqpg%me8bg0c7kz'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -48,9 +46,13 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'apps.blogs',
+    'apps.news',
+    'apps.portal',
 ]
 
-ROOT_URLCONF = 'management.urls'
+ROOT_URLCONF = 'libs.management.urls'
 
 TEMPLATES = [
     {
@@ -68,18 +70,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'management.wsgi.application'
+WSGI_APPLICATION = 'libs.management.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/1.9/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
 
 
 # Password validation
@@ -119,3 +111,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+CONFIG_FILE = os.path.join(BASE_DIR,os.path.abspath("configs/config.ini"))
